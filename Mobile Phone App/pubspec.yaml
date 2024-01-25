@@ -1,0 +1,48 @@
+name: watch_connectivity_example
+description: Demonstrates how to use the watch_connectivity plugin.
+publish_to: none
+
+environment:
+  sdk: ">=2.15.1 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  watch_connectivity:
+    git :
+      url : https://github.com/Rexios80/watch_connectivity.git
+      path: watch_connectivity/
+
+  watch_connectivity_garmin:
+    git: 
+      url : https://github.com/Rexios80/watch_connectivity.git
+      path: watch_connectivity_garmin/
+
+  is_wear: ^0.0.1+1
+  workout: ^0.6.3
+  intl: ^0.19.0
+  wear:
+    git:
+      prs:
+        - https://github.com/fluttercommunity/flutter_wear_plugin/pull/19
+        - https://github.com/fluttercommunity/flutter_wear_plugin/pull/22
+        - https://github.com/fluttercommunity/flutter_wear_plugin/pull/24
+      url: https://github.com/Rexios80/flutter_wear_plugin.git
+      ref: 473262879853259129e0a1d7431ce2e024746d58
+  http: ^1.2.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  rexios_lints: ^6.0.1
+
+dependency_overrides:
+  watch_connectivity_platform_interface:
+    git: 
+      url : https://github.com/Rexios80/watch_connectivity.git
+      path: watch_connectivity_platform_interface/
+
+flutter:
+  uses-material-design: true
