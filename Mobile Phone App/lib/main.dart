@@ -11,8 +11,7 @@ late final bool isWear;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
-  isWear = (await IsWear().check()) ?? false;
+  isWear = (await IsWear().check()) ?? false;  
 
   runApp(const MyApp());
 }
@@ -54,14 +53,6 @@ class _MyAppState extends State<MyApp> {
   // var _context = <String, dynamic>{};
   // var _receivedContexts = <Map<String, dynamic>>[];
   final List<Map<String, dynamic>> _log = [];
-  Map<String, String> fitnessData = {
-    'Heart rate': 'N/A',
-    'Calories': 'N/A',
-    'Steps': 'N/A',
-    'Distance': 'N/A',
-    'Speed': 'N/A',
-  };
-
   Timer? timer;
 
   @override
@@ -69,11 +60,7 @@ class _MyAppState extends State<MyApp> {
     super.initState();
     initPlatformState();
     _watch.messageStream.listen((e) => setState(() {
-          fitnessData['Heart rate'] = e['heartRate'].toString();
-          fitnessData['Calories'] = e['calories'].toString();
-          fitnessData['Steps'] = e['steps'].toString();
-          fitnessData['Distance'] = e['distance'].toString();
-          fitnessData['Speed'] = e['speed'].toString();
+          
           final requestBody = {
             'Heart rate': e['Heart rate'].toString(),
             'Calories': e['Calories'].toString(),
@@ -81,9 +68,15 @@ class _MyAppState extends State<MyApp> {
             'Speed': e['Speed'].toString(),
             'Distance' : e['Distance'].toString(),
             'DateTime': e['Datetime'].toString(),
+            'Starting Latitude': e['Starting Latitude'].toString(),
+            'Starting Longitude': e['Starting Longitude'].toString(),
+            'Ending Latitude': e['Ending Latitude'].toString(),
+            'Ending Longitude' : e['Ending Longitude'].toString(), 
+            'Duration': e['Duration'].toString(),
+            'Exercise': e['Exercise'].toString(),
           };
-          // print('$requestBody');
-          postData(requestBody);
+          print('$requestBody');
+          // postData(requestBody);
           _log.add(e);
         }),);
     // _watch.contextStream.listen((e) => setState(() => _log.add('Received context: $e')));
@@ -278,6 +271,7 @@ class _MyAppState extends State<MyApp> {
                             ),
                           ],
                         ),
+
                         Row(
                           children: [
                             Text(
@@ -289,6 +283,28 @@ class _MyAppState extends State<MyApp> {
                             ),
                           ],
                         ),
+                        Row(
+                          children: [
+                            Text(
+                              'Duration : ',
+                              style: Theme.of(context).textTheme.bodyMedium,
+                            ),
+                            Text(
+                              e['Duration'],
+                            ),
+                          ],
+                        ),
+                        // Row(
+                        //   children: [
+                        //     Text(
+                        //       'Ending Location: ',
+                        //       style: Theme.of(context).textTheme.bodyMedium,
+                        //     ),
+                        //     Text(
+                        //       e['Calories'],
+                        //     ),
+                        //   ],
+                        // ),
                         // Row(
                         //   children: [
                         //     Text(

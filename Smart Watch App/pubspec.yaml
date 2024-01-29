@@ -21,6 +21,12 @@ dependencies:
   workout: ^0.6.3
   intl: ^0.19.0
   is_wear: ^0.0.1+1
+  geolocator: ^10.1.0
+  # geocoding: ^2.1.1
+  sensors_plus: ^4.0.2
+  permission_handler: ^11.0.0
+  pedometer: ^4.0.1
+  #  geolocator: ^10.1.0
   wear:
     git:
       prs:
