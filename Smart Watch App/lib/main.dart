@@ -56,7 +56,7 @@ class _MyAppState extends State<MyApp> {
                 log('Watch Shape is $shape');
                 return AmbientMode(
                   builder: (context, mode, child) {
-                    log('Model $mode');
+                    log('Model13 $mode');
                     return child!;
                   },
                   child: const WorkoutSelectionScreen(),
